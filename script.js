@@ -24,6 +24,7 @@ const GameBoard = (() => {
     const checkWinning = () => {
         if (moveNum >= 5) {
             checkWinningHorizontally();
+            checkWinningVertically();
         }
     };
 
@@ -34,6 +35,23 @@ const GameBoard = (() => {
                 row.every((elem) => elem === "O")
             ) {
                 alert("Someone has won");
+                break;
+            }
+        }
+    };
+
+    const checkWinningVertically = () => {
+        let firstRow = board[0],
+            secondRow = board[1],
+            thirdRow = board[2];
+
+        for (let elem of firstRow) {
+            if (
+                elem &&
+                elem === secondRow[firstRow.indexOf(elem)] &&
+                elem === thirdRow[firstRow.indexOf(elem)]
+            ) {
+                alert("Yep true");
                 break;
             }
         }
