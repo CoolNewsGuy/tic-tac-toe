@@ -1,40 +1,53 @@
 const GameBoard = (() => {
     let gameContainer = document.querySelector(".gameboard"),
-        squares = document.querySelectorAll(".square"),
-        moveNum = 1,
+        _squares = document.querySelectorAll(".square"),
         board = [
             ["", "", ""],
             ["", "", ""],
             ["", "", ""],
         ];
 
-    const firstRow = board[0],
-        secondRow = board[1],
-        thirdRow = board[2];
-
-    const updateSquare = (e) => {
+    const __updateSquare = (e) => {
         let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
 
         if (!e.target.innerText)
-            moveNum % 2 !== 0
+            Game.moveNum % 2 !== 0
                 ? (e.target.innerText = "X")
                 : (e.target.innerText = "O");
 
-        moveNum++;
+        Game.moveNum++;
         board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
-        checkWinning();
+        Game.checkWinning();
     };
 
+    _squares.forEach((square) =>
+        square.addEventListener("click", __updateSquare, false)
+    );
+
+    return {
+        gameContainer,
+        board,
+    };
+})();
+
+const Game = (() => {
+    const _firstRow = GameBoard.board[0],
+        _secondRow = GameBoard.board[1],
+        _thirdRow = GameBoard.board[2];
+
+    let moveNum = 1;
+
     const checkWinning = () => {
+        moveNum++;
         if (moveNum >= 5) {
-            checkWinningHorizontally();
-            checkWinningVertically();
-            checkWinningDiagonally();
+            _checkWinningHorizontally();
+            _checkWinningVertically();
+            _checkWinningDiagonally();
         }
     };
 
-    const checkWinningHorizontally = () => {
-        for (let row of board) {
+    const _checkWinningHorizontally = () => {
+        for (let row of GameBoard.board) {
             if (
                 row.every((elem) => elem === "X") ||
                 row.every((elem) => elem === "O")
@@ -45,12 +58,12 @@ const GameBoard = (() => {
         }
     };
 
-    const checkWinningVertically = () => {
-        for (let elem of firstRow) {
+    const _checkWinningVertically = () => {
+        for (let elem of _firstRow) {
             if (
                 elem &&
-                elem === secondRow[firstRow.indexOf(elem)] &&
-                elem === thirdRow[firstRow.indexOf(elem)]
+                elem === _secondRow[_firstRow.indexOf(elem)] &&
+                elem === _thirdRow[_firstRow.indexOf(elem)]
             ) {
                 alert("Yep true");
                 break;
@@ -58,28 +71,24 @@ const GameBoard = (() => {
         }
     };
 
-    const checkWinningDiagonally = () => {
+    const _checkWinningDiagonally = () => {
         if (
-            firstRow[0] &&
-            firstRow[0] === secondRow[1] &&
-            firstRow[0] === thirdRow[2]
+            _firstRow[0] &&
+            _firstRow[0] === _secondRow[1] &&
+            _firstRow[0] === _thirdRow[2]
         ) {
             alert("KO");
         } else if (
-            firstRow[2] &&
-            firstRow[2] === secondRow[1] &&
-            firstRow[2] === thirdRow[0]
+            _firstRow[2] &&
+            _firstRow[2] === _secondRow[1] &&
+            _firstRow[2] === _thirdRow[0]
         ) {
             alert("Yeahhh");
         }
     };
 
-    squares.forEach((square) =>
-        square.addEventListener("click", updateSquare, false)
-    );
-
     return {
-        gameContainer,
-        board,
+        checkWinning,
+        moveNum,
     };
 })();
