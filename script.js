@@ -8,6 +8,10 @@ const GameBoard = (() => {
             ["", "", ""],
         ];
 
+    const firstRow = board[0],
+        secondRow = board[1],
+        thirdRow = board[2];
+
     const updateSquare = (e) => {
         let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
 
@@ -25,6 +29,7 @@ const GameBoard = (() => {
         if (moveNum >= 5) {
             checkWinningHorizontally();
             checkWinningVertically();
+            checkWinningDiagonally();
         }
     };
 
@@ -41,10 +46,6 @@ const GameBoard = (() => {
     };
 
     const checkWinningVertically = () => {
-        let firstRow = board[0],
-            secondRow = board[1],
-            thirdRow = board[2];
-
         for (let elem of firstRow) {
             if (
                 elem &&
@@ -54,6 +55,22 @@ const GameBoard = (() => {
                 alert("Yep true");
                 break;
             }
+        }
+    };
+
+    const checkWinningDiagonally = () => {
+        if (
+            firstRow[0] &&
+            firstRow[0] === secondRow[1] &&
+            firstRow[0] === thirdRow[2]
+        ) {
+            alert("KO");
+        } else if (
+            firstRow[2] &&
+            firstRow[2] === secondRow[1] &&
+            firstRow[2] === thirdRow[0]
+        ) {
+            alert("Yeahhh");
         }
     };
 
