@@ -30,6 +30,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 9rem;
+    user-select: none;
 }
 
 .top {
