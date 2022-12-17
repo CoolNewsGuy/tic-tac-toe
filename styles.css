@@ -9,7 +9,6 @@ body {
 }
 
 body {
-   /* background: rgb(32, 32, 32); */
    background: #000;
 
    display: flex;
@@ -27,14 +26,15 @@ body {
 
 .square {
    border: 2px solid #0ff;
-   color: #0ff;
-   text-shadow: 0 0 20px #0ff;
+   color: rgb(53, 231, 133);
+   text-shadow: 0 0 20px rgb(53, 231, 133);
    box-shadow: 0 0 10px 5px #0ff;
    display: flex;
    justify-content: center;
    align-items: center;
    font-size: 9rem;
    user-select: none;
+   animation: light-up 2s infinite alternate;
 }
 
 .top {
@@ -51,4 +51,15 @@ body {
 
 .left {
    border-left: none;
+}
+
+@keyframes light-up {
+   0% {
+      box-shadow: 0 0 10px 0px #0ff;
+      text-shadow: 0 0 0px rgb(53, 231, 133);
+   }
+   100% {
+      box-shadow: 0 0 10px 5px #0ff;
+      text-shadow: 0 0 20px rgb(53, 231, 133);
+   }
 }
