@@ -1,12 +1,13 @@
 const Game = (() => {
-   let moveNum = 1;
-
    const checkWinning = () => {
-      moveNum++;
-      if (moveNum >= 5) {
-         _checkWinningHorizontally();
-         _checkWinningVertically();
-         _checkWinningDiagonally();
+      if (Game.moveNum >= 5) {
+         if (
+            _checkWinningHorizontally() ||
+            _checkWinningVertically() ||
+            _checkWinningDiagonally()
+         ) {
+            return true;
+         }
       }
    };
 
@@ -16,8 +17,7 @@ const Game = (() => {
             row.every((elem) => elem === "X") ||
             row.every((elem) => elem === "O")
          ) {
-            alert("Someone has won");
-            break;
+            return true;
          }
       }
    };
@@ -29,8 +29,7 @@ const Game = (() => {
             elem === GameBoard.secondRow[GameBoard.firstRow.indexOf(elem)] &&
             elem === GameBoard.thirdRow[GameBoard.firstRow.indexOf(elem)]
          ) {
-            alert("Yep true");
-            break;
+            return true;
          }
       }
    };
@@ -41,18 +40,18 @@ const Game = (() => {
          GameBoard.firstRow[0] === GameBoard.secondRow[1] &&
          GameBoard.firstRow[0] === GameBoard.thirdRow[2]
       ) {
-         alert("KO");
+         return true;
       } else if (
          GameBoard.firstRow[2] &&
          GameBoard.firstRow[2] === GameBoard.secondRow[1] &&
          GameBoard.firstRow[2] === GameBoard.thirdRow[0]
       ) {
-         alert("Yeahhh");
+         return true;
       }
    };
 
    return {
       checkWinning,
-      moveNum,
+      moveNum: 1,
    };
 })();

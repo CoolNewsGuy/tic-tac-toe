@@ -7,7 +7,7 @@ const GameBoard = (() => {
          ["", "", ""],
       ];
 
-   const firstRow = board[0],
+   let firstRow = board[0],
       secondRow = board[1],
       thirdRow = board[2];
 
@@ -21,7 +21,25 @@ const GameBoard = (() => {
 
       Game.moveNum++;
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
-      Game.checkWinning();
+
+      if (Game.checkWinning()) {
+         cleanTheBoard();
+      }
+   };
+
+   const cleanTheBoard = () => {
+      _squares.forEach((square) => (square.innerText = ""));
+      board = [
+         ["", "", ""],
+         ["", "", ""],
+         ["", "", ""],
+      ];
+
+      GameBoard.board = board;
+      GameBoard.firstRow = board[0];
+      GameBoard.secondRow = board[1];
+      GameBoard.thirdRow = board[2];
+      Game.moveNum = 1;
    };
 
    _squares.forEach((square) =>
