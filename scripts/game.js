@@ -50,8 +50,11 @@ const Game = (() => {
       }
    };
 
+   const checkTie = () => (Game.moveNum === 10 ? true : false);
+
    return {
-      checkWinning,
       moveNum: 1,
+      checkWinning: checkWinning,
+      checkTie: checkTie,
    };
 })();

@@ -1,6 +1,6 @@
 const GameBoard = (() => {
    let gameContainer = document.querySelector(".gameboard"),
-      _squares = document.querySelectorAll(".square"),
+      squares = document.querySelectorAll(".square"),
       board = [
          ["", "", ""],
          ["", "", ""],
@@ -22,13 +22,13 @@ const GameBoard = (() => {
       Game.moveNum++;
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
 
-      if (Game.checkWinning()) {
+      if (Game.checkWinning() || Game.checkTie()) {
          cleanTheBoard();
       }
    };
 
    const cleanTheBoard = () => {
-      _squares.forEach((square) => (square.innerText = ""));
+      squares.forEach((square) => (square.innerText = ""));
       board = [
          ["", "", ""],
          ["", "", ""],
@@ -42,15 +42,16 @@ const GameBoard = (() => {
       Game.moveNum = 1;
    };
 
-   _squares.forEach((square) =>
+   squares.forEach((square) =>
       square.addEventListener("click", __updateSquare, false)
    );
 
    return {
-      gameContainer,
-      board,
-      firstRow,
-      secondRow,
-      thirdRow,
+      gameContainer: gameContainer,
+      squares: squares,
+      board: board,
+      firstRow: firstRow,
+      secondRow: secondRow,
+      thirdRow: thirdRow,
    };
 })();
