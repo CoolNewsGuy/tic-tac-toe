@@ -66,11 +66,15 @@ input#second-player {
    transition: 0.2s;
 }
 
-#start-btn:hover,
-#start-btn:focus {
+#start-btn:hover {
    background: #0ff;
    outline: none;
    color: #000;
+   box-shadow: 0 0 10px 5px #0ff;
+}
+
+#start-btn:focus {
+   outline: none;
    box-shadow: 0 0 10px 5px #0ff;
 }
 
