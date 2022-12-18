@@ -16,6 +16,62 @@ body {
    align-items: center;
 }
 
+/* TODO information */
+.information {
+   background: rgb(17, 17, 24);
+   height: 350px;
+   width: 300px;
+   border: 1px solid #0ff;
+   color: rgb(53, 231, 133);
+   animation: light-up 1s infinite alternate;
+   padding-top: 20px;
+   text-transform: uppercase;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: 1.2rem;
+}
+
+label {
+   margin-bottom: 10px;
+}
+
+input {
+   border: none;
+   background: rgb(32, 42, 48);
+   color: rgb(146, 201, 252);
+   caret-color: #0ff;
+   padding: 6px;
+}
+
+input:focus {
+   outline: 1px solid #0ff;
+}
+
+input#first-player {
+   margin-bottom: 50px;
+}
+
+input#second-player {
+   margin-bottom: 85px;
+}
+
+#start-btn {
+   background: #000;
+   color: #0ff;
+   border: 1px solid #0ff;
+   padding: 5px 40px;
+   font-size: 1.5rem;
+   cursor: pointer;
+   transition: 0.2s;
+}
+
+#start-btn:hover {
+   background: #0ff;
+   color: #000;
+   box-shadow: 0 0 10px 5px #0ff;
+}
+
 /* TODO Gameboard */
 .gameboard {
    height: 600px;
