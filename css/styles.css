@@ -32,6 +32,11 @@ body {
    font-size: 1.2rem;
 }
 
+.information-fade-out {
+   display: none;
+   animation: fade-out 0.5s;
+}
+
 label {
    margin-bottom: 10px;
 }
@@ -86,6 +91,11 @@ input#second-player {
    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
+.gameboard-fade-in {
+   display: block;
+   animation: fade-in 0.5s;
+}
+
 .square {
    border: 2px solid #0ff;
    color: rgb(53, 231, 133);
@@ -123,5 +133,23 @@ input#second-player {
    100% {
       box-shadow: 0 0 10px 5px #0ff;
       text-shadow: 0 0 20px rgb(53, 231, 133);
+   }
+}
+
+@keyframes fade-out {
+   from {
+      opacity: 1;
+   }
+   to {
+      opacity: 0;
+   }
+}
+
+@keyframes fade-in {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
    }
 }
