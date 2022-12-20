@@ -32,9 +32,8 @@ body {
    font-size: 1.2rem;
 }
 
-.information-fade-out {
-   display: none;
-   animation: fade-out 0.5s;
+#information-fade-out {
+   animation: fade-out 1s;
 }
 
 label {
@@ -87,13 +86,13 @@ input#second-player {
 .gameboard {
    height: 600px;
    width: 600px;
-   display: grid;
+   display: none;
    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
-.gameboard-fade-in {
-   display: block;
-   animation: fade-in 0.5s;
+#gameboard-fade-in {
+   animation: fade-in 1s;
+   display: grid;
 }
 
 .square {
@@ -148,6 +147,7 @@ input#second-player {
 @keyframes fade-in {
    from {
       opacity: 0;
+      display: flex;
    }
    to {
       opacity: 1;
