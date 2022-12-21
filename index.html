@@ -12,7 +12,7 @@
 
 <body>
 
-  <form class="information">
+  <form class="information" style="display: none;">
     <label for="first-player">first player: </label>
     <input type="text" id="first-player" required>
 
@@ -22,7 +22,7 @@
     <button id="start-btn">START</button>
   </form>
 
-  <div class="gameboard">
+  <div class="gameboard" style="display: grid;">
     <div data-index="[0, 0]" class="square square-one top left"></div>
     <div data-index="[0, 1]" class="square square-two top center"></div>
     <div data-index="[0, 2]" class="square square-three top right"></div>
@@ -32,6 +32,18 @@
     <div data-index="[2, 0]" class="square square-seven bottom left"></div>
     <div data-index="[2, 1]" class="square square-eight bottom center"></div>
     <div data-index="[2, 2]" class="square square-nine bottom right"></div>
+  </div>
+
+  <div class="players-info">
+    <div class="player-1">
+      <h1 class="player-1-name name">Aymen</h1>
+      <span class="player-1-score score">5</span>
+    </div>
+    <div class="seperator-line"></div>
+    <div class="player-2">
+      <h1 class="player-2-name name">Mohamed</h1>
+      <span class="player-2-score score">7</span>
+    </div>
   </div>
 
   <script src="scripts/game.js"></script>

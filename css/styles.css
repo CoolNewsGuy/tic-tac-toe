@@ -10,10 +10,11 @@ body {
 
 body {
    background: #000;
-
    display: flex;
-   justify-content: center;
    align-items: center;
+   padding-top: 70px;
+   gap: 50px;
+   flex-direction: column;
 }
 
 /* TODO information */
@@ -152,4 +153,35 @@ input#second-player {
    to {
       opacity: 1;
    }
+}
+
+/* TODO Player Information */
+.players-info {
+   color: #fff;
+   display: flex;
+   justify-content: space-between;
+   width: 500px;
+   text-transform: uppercase;
+}
+
+.players-info > * {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 30px;
+}
+
+.name {
+   font-size: 2.5rem;
+}
+
+.score {
+   font-size: 2.5rem;
+   font-weight: bold;
+}
+
+.seperator-line {
+   width: 2px;
+   height: 200px;
+   background: #fff;
 }
