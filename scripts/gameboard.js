@@ -23,11 +23,11 @@ const GameBoard = (() => {
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
 
       if (Game.checkWinning() || Game.checkTie()) {
-         cleanTheBoard();
+         _cleanTheBoard();
       }
    };
 
-   const cleanTheBoard = () => {
+   const _cleanTheBoard = () => {
       squares.forEach((square) => (square.innerText = ""));
       board = [
          ["", "", ""],
