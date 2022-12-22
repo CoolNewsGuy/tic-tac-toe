@@ -1,4 +1,6 @@
 const Game = (() => {
+   let playersInfo = document.querySelector(".players-info");
+
    const checkWinning = () => {
       if (Game.moveNum >= 5) {
          if (
@@ -53,6 +55,7 @@ const Game = (() => {
    const checkTie = () => (Game.moveNum === 10 ? true : false);
 
    return {
+      playersInfo: playersInfo,
       moveNum: 1,
       checkWinning: checkWinning,
       checkTie: checkTie,

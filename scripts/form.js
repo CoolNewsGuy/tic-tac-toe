@@ -9,6 +9,8 @@ const form = (() => {
       setTimeout(() => {
          form.style.display = "none";
          GameBoard.gameContainer.id = "gameboard-fade-in";
+         Game.playersInfo.id = "players-info-fade-in";
+         document.body.style.justifyContent = "start";
       }, 1000);
    };
 

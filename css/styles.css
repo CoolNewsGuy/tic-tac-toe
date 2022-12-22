@@ -12,7 +12,8 @@ body {
    background: #000;
    display: flex;
    align-items: center;
-   padding-top: 70px;
+   justify-content: center;
+   padding-top: 50px;
    gap: 50px;
    flex-direction: column;
 }
@@ -94,6 +95,7 @@ input#second-player {
 #gameboard-fade-in {
    animation: fade-in 1s;
    display: grid;
+   flex-shrink: 0;
 }
 
 .square {
@@ -158,10 +160,15 @@ input#second-player {
 /* TODO Player Information */
 .players-info {
    color: #fff;
-   display: flex;
+   display: none;
    justify-content: space-between;
    width: 500px;
    text-transform: uppercase;
+}
+
+#players-info-fade-in {
+   animation: fade-in 1s;
+   display: flex;
 }
 
 .players-info > * {
