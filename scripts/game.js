@@ -1,5 +1,14 @@
 const Game = (() => {
-   let playersInfo = document.querySelector(".players-info");
+   let playersInfo = document.querySelector(".players-info"),
+      _players = {
+         firstPlayer: {
+            name: document.querySelector(".player-1-name"),
+         },
+
+         secondPlayer: {
+            name: document.querySelector(".player-2-name"),
+         },
+      };
 
    const checkWinning = () => {
       if (Game.moveNum >= 5) {
@@ -52,12 +61,20 @@ const Game = (() => {
       }
    };
 
-   const checkTie = () => (Game.moveNum === 10 ? true : false);
+   const checkTie = () => {
+      Game.moveNum === 10 ? true : false;
+   };
+
+   const setPlayersInfo = () => {
+      _players.firstPlayer.name.innerText = form.firstPlayer;
+      _players.secondPlayer.name.innerText = form.secondPlayer;
+   };
 
    return {
       playersInfo: playersInfo,
       moveNum: 1,
       checkWinning: checkWinning,
       checkTie: checkTie,
+      setPlayersInfo: setPlayersInfo,
    };
 })();

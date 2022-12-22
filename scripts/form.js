@@ -18,6 +18,8 @@ const form = (() => {
 
          form.firstPlayer = firstPlayer.value;
          form.secondPlayer = secondPlayer.value;
+
+         Game.setPlayersInfo();
       }
    };
 
