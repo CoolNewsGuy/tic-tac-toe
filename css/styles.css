@@ -168,7 +168,19 @@ input#second-player {
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 30px;
+   gap: 20px;
+   color: rgb(7, 233, 109);
+   animation: lighten-winner 2s infinite alternate;
+}
+
+.current-loser {
+   color: #f00;
+   animation: lighten-loser 2s infinite alternate;
+}
+
+.current-winner {
+   color: rgb(7, 233, 109);
+   animation: lighten-winner 2s infinite alternate;
 }
 
 .name {
@@ -184,4 +196,33 @@ input#second-player {
    width: 2px;
    height: 200px;
    background: #fff;
+   background: rgb(244, 247, 43);
+   animation: lighten-seperator-line 2s infinite alternate;
+}
+
+@keyframes lighten-winner {
+   from {
+      text-shadow: 0 0 0px rgb(7, 233, 109);
+   }
+   to {
+      text-shadow: 0 0 20px rgb(7, 233, 109);
+   }
+}
+
+@keyframes lighten-loser {
+   from {
+      text-shadow: 0 0 0px #f00;
+   }
+   to {
+      text-shadow: 0 0 20px #f00;
+   }
+}
+
+@keyframes lighten-seperator-line {
+   from {
+      box-shadow: 0 0 10px 0px rgb(244, 247, 43);
+   }
+   to {
+      box-shadow: 0 0 10px 5px rgb(244, 247, 43);
+   }
 }
