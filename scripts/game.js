@@ -11,7 +11,7 @@ const Game = (() => {
             ".player-2",
             ".player-2-name",
             ".player-2-score",
-            true
+            false
          ),
       };
    const checkWinning = () => {
@@ -110,14 +110,14 @@ const Game = (() => {
    };
 
    return {
-      playersInfo: playersInfo,
+      playersInfo,
       moveNum: 1,
       numOfX: 0,
       numOfO: 0,
-      checkWinning: checkWinning,
-      checkTie: checkTie,
-      setPlayersInfo: setPlayersInfo,
-      changeStarterPlayer: changeStarterPlayer,
-      increasePlayerScore: increasePlayerScore,
+      checkWinning,
+      checkTie,
+      setPlayersInfo,
+      changeStarterPlayer,
+      increasePlayerScore,
    };
 })();

@@ -58,11 +58,11 @@ const GameBoard = (() => {
    );
 
    return {
-      gameContainer: gameContainer,
-      squares: squares,
-      board: board,
-      firstRow: firstRow,
-      secondRow: secondRow,
-      thirdRow: thirdRow,
+      gameContainer,
+      squares,
+      board,
+      firstRow,
+      secondRow,
+      thirdRow,
    };
 })();
