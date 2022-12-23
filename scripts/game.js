@@ -1,21 +1,19 @@
 const Game = (() => {
    let playersInfo = document.querySelector(".players-info"),
       _players = {
-         firstPlayer: {
-            info: document.querySelector(".player-1"),
-            name: document.querySelector(".player-1-name"),
-            score: document.querySelector(".player-1-score"),
-            isStarter: true,
-         },
-
-         secondPlayer: {
-            info: document.querySelector(".player-2"),
-            name: document.querySelector(".player-2-name"),
-            score: document.querySelector(".player-2-score"),
-            isStarter: false,
-         },
+         firstPlayer: Player(
+            ".player-1",
+            ".player-1-name",
+            ".player-1-score",
+            true
+         ),
+         secondPlayer: Player(
+            ".player-2",
+            ".player-2-name",
+            ".player-2-score",
+            true
+         ),
       };
-
    const checkWinning = () => {
       if (Game.moveNum >= 5) {
          if (
