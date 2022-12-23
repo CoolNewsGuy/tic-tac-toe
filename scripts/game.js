@@ -119,6 +119,5 @@ const Game = (() => {
       setPlayersInfo,
       changeStarterPlayer,
       increasePlayerScore,
-      _checkWinningVertically,
    };
 })();
