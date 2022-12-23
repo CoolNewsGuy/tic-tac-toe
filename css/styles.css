@@ -196,7 +196,7 @@ input#second-player {
 
 .starter-player {
    color: rgb(0, 195, 255);
-   animation: lighten-current-player 2s infinite alternate;
+   animation: lighten-starter-player 2s infinite alternate;
 }
 
 .name {
