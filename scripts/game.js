@@ -4,12 +4,14 @@ const Game = (() => {
          firstPlayer: {
             info: document.querySelector(".player-1"),
             name: document.querySelector(".player-1-name"),
+            score: document.querySelector(".player-1-score"),
             isStarter: true,
          },
 
          secondPlayer: {
             info: document.querySelector(".player-2"),
             name: document.querySelector(".player-2-name"),
+            score: document.querySelector(".player-2-score"),
             isStarter: false,
          },
       };
@@ -88,12 +90,36 @@ const Game = (() => {
       }
    };
 
+   const increasePlayerScore = () => {
+      if (Game.numOfX > Game.numOfO) {
+         if (_players.firstPlayer.isStarter)
+            _players.firstPlayer.score.innerText =
+               +_players.firstPlayer.score.innerText + 1;
+         else
+            _players.secondPlayer.score.innerText =
+               +_players.secondPlayer.score.innerText + 1;
+      } else {
+         if (!_players.firstPlayer.isStarter)
+            _players.firstPlayer.score.innerText =
+               +_players.firstPlayer.score.innerText + 1;
+         else
+            _players.secondPlayer.score.innerText =
+               +_players.secondPlayer.score.innerText + 1;
+      }
+
+      Game.numOfO = 0;
+      Game.numOfX = 0;
+   };
+
    return {
       playersInfo: playersInfo,
       moveNum: 1,
+      numOfX: 0,
+      numOfO: 0,
       checkWinning: checkWinning,
       checkTie: checkTie,
       setPlayersInfo: setPlayersInfo,
       changeStarterPlayer: changeStarterPlayer,
+      increasePlayerScore: increasePlayerScore,
    };
 })();

@@ -18,14 +18,18 @@ const GameBoard = (() => {
          if (Game.moveNum % 2 !== 0) {
             e.target.classList.add("x");
             e.target.innerText = "X";
+            Game.numOfX++;
          } else {
             e.target.innerText = "O";
+            Game.numOfO++;
          }
 
       Game.moveNum++;
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
 
       if (Game.checkWinning() || Game.checkTie()) {
+         if (Game.checkWinning()) Game.increasePlayerScore();
+
          _cleanTheBoard();
          Game.changeStarterPlayer();
       }
