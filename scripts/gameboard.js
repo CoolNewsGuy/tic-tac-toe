@@ -15,9 +15,12 @@ const GameBoard = (() => {
       let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
 
       if (!e.target.innerText)
-         Game.moveNum % 2 !== 0
-            ? (e.target.innerText = "X")
-            : (e.target.innerText = "O");
+         if (Game.moveNum % 2 !== 0) {
+            e.target.classList.add("x");
+            e.target.innerText = "X";
+         } else {
+            e.target.innerText = "O";
+         }
 
       Game.moveNum++;
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
