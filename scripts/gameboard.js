@@ -27,11 +27,15 @@ const GameBoard = (() => {
 
       if (Game.checkWinning() || Game.checkTie()) {
          _cleanTheBoard();
+         Game.changeStarterPlayer();
       }
    };
 
    const _cleanTheBoard = () => {
-      squares.forEach((square) => (square.innerText = ""));
+      squares.forEach((square) => {
+         square.innerText = "";
+         square.classList.remove("x");
+      });
       board = [
          ["", "", ""],
          ["", "", ""],
