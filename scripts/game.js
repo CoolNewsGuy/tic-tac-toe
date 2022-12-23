@@ -38,11 +38,11 @@ const Game = (() => {
    };
 
    const _checkWinningVertically = () => {
-      for (let elem of GameBoard.firstRow) {
+      for (let i = 0; i < 3; i++) {
          if (
-            elem &&
-            elem === GameBoard.secondRow[GameBoard.firstRow.indexOf(elem)] &&
-            elem === GameBoard.thirdRow[GameBoard.firstRow.indexOf(elem)]
+            GameBoard.firstRow[i] &&
+            GameBoard.firstRow[i] === GameBoard.secondRow[i] &&
+            GameBoard.firstRow[i] === GameBoard.thirdRow[i]
          ) {
             return true;
          }
@@ -119,5 +119,6 @@ const Game = (() => {
       setPlayersInfo,
       changeStarterPlayer,
       increasePlayerScore,
+      _checkWinningVertically,
    };
 })();
