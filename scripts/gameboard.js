@@ -2,9 +2,21 @@ const GameBoard = (() => {
    let gameContainer = document.querySelector(".gameboard"),
       squares = document.querySelectorAll(".square"),
       board = [
-         ["", "", ""],
-         ["", "", ""],
-         ["", "", ""],
+         [
+            [0, 0],
+            [0, 1],
+            [0, 2],
+         ],
+         [
+            [1, 0],
+            [1, 1],
+            [1, 2],
+         ],
+         [
+            [2, 0],
+            [2, 1],
+            [2, 2],
+         ],
       ];
 
    let firstRow = board[0],
