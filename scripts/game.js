@@ -7,6 +7,7 @@ const Game = (() => {
             ".player-1-score",
             true
          ),
+
          secondPlayer: Player(
             ".player-2",
             ".player-2-name",
@@ -14,6 +15,7 @@ const Game = (() => {
             false
          ),
       };
+
    const checkWinning = () => {
       if (Game.moveNum >= 5) {
          if (
@@ -80,6 +82,8 @@ const Game = (() => {
          _players.firstPlayer.info.classList.remove("starter-player");
          _players.secondPlayer.info.classList.add("starter-player");
          _players.secondPlayer.isStarter = true;
+
+         if (Game.isAITurn) Game.playAI();
       } else {
          _players.secondPlayer.isStarter = false;
          _players.secondPlayer.info.classList.remove("starter-player");
