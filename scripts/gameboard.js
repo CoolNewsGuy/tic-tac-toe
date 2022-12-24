@@ -94,7 +94,7 @@ const GameBoard = (() => {
 
    gameContainer.addEventListener("click", (e) => {
       __fillSquareByHuman(e);
-      setTimeout(Game.playAI, 200);
+      setTimeout(AI.playAI, 200);
    });
 
    return {
