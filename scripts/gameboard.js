@@ -23,6 +23,18 @@ const GameBoard = (() => {
       secondRow = board[1],
       thirdRow = board[2];
 
+   const getArrayOfEmptySpots = () => {
+      let arr = [];
+
+      GameBoard.board.forEach((row) => {
+         row.forEach((spot) =>
+            spot instanceof Array ? arr.push(spot) : false
+         );
+      });
+
+      return arr;
+   };
+
    const __updateSquare = (e) => {
       let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
 
@@ -53,9 +65,21 @@ const GameBoard = (() => {
          square.classList.remove("x");
       });
       board = [
-         ["", "", ""],
-         ["", "", ""],
-         ["", "", ""],
+         [
+            [0, 0],
+            [0, 1],
+            [0, 2],
+         ],
+         [
+            [1, 0],
+            [1, 1],
+            [1, 2],
+         ],
+         [
+            [2, 0],
+            [2, 1],
+            [2, 2],
+         ],
       ];
 
       GameBoard.board = board;
@@ -73,6 +97,7 @@ const GameBoard = (() => {
       gameContainer,
       squares,
       board,
+      getArrayOfEmptySpots,
       firstRow,
       secondRow,
       thirdRow,
