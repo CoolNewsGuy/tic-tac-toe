@@ -35,7 +35,7 @@ const GameBoard = (() => {
       return arr;
    };
 
-   const __updateSquare = (e) => {
+   const __fillSquare = (e) => {
       let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
 
       if (!e.target.innerText)
@@ -44,6 +44,7 @@ const GameBoard = (() => {
             e.target.innerText = "X";
             Game.numOfX++;
          } else {
+            e.target.classList.add("o");
             e.target.innerText = "O";
             Game.numOfO++;
          }
@@ -63,6 +64,7 @@ const GameBoard = (() => {
       squares.forEach((square) => {
          square.innerText = "";
          square.classList.remove("x");
+         square.classList.remove("o");
       });
       board = [
          [
@@ -90,7 +92,7 @@ const GameBoard = (() => {
    };
 
    squares.forEach((square) =>
-      square.addEventListener("click", __updateSquare, false)
+      square.addEventListener("click", __fillSquare, false)
    );
 
    return {
