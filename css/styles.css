@@ -175,8 +175,8 @@ input#second-player {
 .players-info {
    color: #fff;
    display: none;
-   justify-content: space-between;
-   width: 500px;
+   justify-content: center;
+   width: 100%;
    text-transform: uppercase;
 }
 
@@ -189,7 +189,9 @@ input#second-player {
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 20px;
+   flex-shrink: 0;
+   width: 400px;
+   gap: 10px;
    color: rgb(7, 233, 109);
    animation: lighten-player 2s infinite alternate;
 }
