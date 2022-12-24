@@ -85,6 +85,7 @@ const Game = (() => {
          _players.secondPlayer.info.classList.remove("starter-player");
          _players.firstPlayer.info.classList.add("starter-player");
          _players.firstPlayer.isStarter = true;
+         Game.isAITurn = false;
       }
    };
 
@@ -109,6 +110,23 @@ const Game = (() => {
       Game.numOfX = 0;
    };
 
+   const playAI = () => {
+      if (Game.isAITurn) {
+         let randomSpot = Math.floor(Math.random() * 9);
+
+         while (
+            GameBoard.squares[randomSpot].classList.contains("x") ||
+            GameBoard.squares[randomSpot].classList.contains("o")
+         ) {
+            randomSpot = Math.floor(Math.random() * 9);
+         }
+
+         GameBoard.squares[randomSpot].click();
+
+         Game.isAITurn = false;
+      }
+   };
+
    return {
       playersInfo,
       moveNum: 1,
@@ -119,5 +137,7 @@ const Game = (() => {
       setPlayersInfo,
       changeStarterPlayer,
       increasePlayerScore,
+      playAI,
+      isAITurn: false,
    };
 })();

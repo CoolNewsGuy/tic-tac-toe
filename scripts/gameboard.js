@@ -35,7 +35,7 @@ const GameBoard = (() => {
       return arr;
    };
 
-   const __fillSquare = (e) => {
+   const __fillSquareByHuman = (e) => {
       let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
 
       if (!e.target.innerText)
@@ -52,6 +52,7 @@ const GameBoard = (() => {
       Game.moveNum++;
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
 
+      Game.isAITurn = true;
       if (Game.checkWinning() || Game.checkTie()) {
          if (Game.checkWinning()) Game.increasePlayerScore();
 
@@ -91,7 +92,10 @@ const GameBoard = (() => {
       Game.moveNum = 1;
    };
 
-   gameContainer.addEventListener("click", __fillSquare);
+   gameContainer.addEventListener("click", (e) => {
+      __fillSquareByHuman(e);
+      setTimeout(Game.playAI, 200);
+   });
 
    return {
       gameContainer,
