@@ -91,7 +91,7 @@ const GameBoard = (() => {
       Game.moveNum = 1;
    };
 
-   gameContainer.addEventListener("click", (e) => __fillSquare(e));
+   gameContainer.addEventListener("click", __fillSquare);
 
    return {
       gameContainer,
