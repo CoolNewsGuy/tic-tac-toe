@@ -54,11 +54,13 @@ const GameBoard = (() => {
 
       Game.isAITurn = true;
       if (Game.checkWinning() || Game.checkTie()) {
+         gameContainer.style.pointerEvents = "none";
          if (Game.checkWinning()) Game.increasePlayerScore();
 
          setTimeout(() => {
             _cleanTheBoard();
             Game.changeStarterPlayer();
+            gameContainer.style.pointerEvents = "";
          }, 1000);
       }
    };
