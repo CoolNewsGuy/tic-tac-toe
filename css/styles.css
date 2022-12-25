@@ -111,6 +111,11 @@ input#second-player {
    animation: light-up 2s infinite alternate;
 }
 
+.winning-line {
+   color: #ffa500;
+   animation: light-up-winning-line 1s infinite alternate;
+}
+
 .x {
    color: rgb(0, 195, 255);
    animation: light-up 2s infinite alternate, light-up-x 2s infinite alternate;
@@ -149,6 +154,15 @@ input#second-player {
    }
    100% {
       text-shadow: 0 0 20px rgb(0, 195, 255);
+   }
+}
+
+@keyframes light-up-winning-line {
+   0% {
+      text-shadow: 0 0 0px #ffa500;
+   }
+   100% {
+      text-shadow: 0 0 20px #ffa500;
    }
 }
 
