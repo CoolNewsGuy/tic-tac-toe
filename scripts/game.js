@@ -59,17 +59,28 @@ const Game = (() => {
    };
 
    const _checkWinningDiagonally = () => {
+      // Check on the main diagonal
       if (
          GameBoard.firstRow[0] &&
          GameBoard.firstRow[0] === GameBoard.secondRow[1] &&
          GameBoard.firstRow[0] === GameBoard.thirdRow[2]
       ) {
+         let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
+         for (let i = 0; i < 3; i++)
+            DOMBoard[i][i].classList.add("winning-line");
+
          return true;
-      } else if (
+      }
+      // check on the secondary diagonal
+      else if (
          GameBoard.firstRow[2] &&
          GameBoard.firstRow[2] === GameBoard.secondRow[1] &&
          GameBoard.firstRow[2] === GameBoard.thirdRow[0]
       ) {
+         let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
+         for (let i = 0, j = 2; i < 3; i++, j--)
+            DOMBoard[i][j].classList.add("winning-line");
+
          return true;
       }
    };
