@@ -43,16 +43,18 @@ const GameBoard = (() => {
             e.target.classList.add("x");
             e.target.innerText = "X";
             Game.numOfX++;
+            Game.moveNum++;
+            Game.isAITurn = true;
          } else {
             e.target.classList.add("o");
             e.target.innerText = "O";
             Game.numOfO++;
+            Game.moveNum++;
+            Game.isAITurn = true;
          }
 
-      Game.moveNum++;
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
 
-      Game.isAITurn = true;
       if (Game.checkWinning() || Game.checkTie()) {
          gameContainer.style.pointerEvents = "none";
          if (Game.checkWinning()) Game.increasePlayerScore();
