@@ -83,7 +83,7 @@ const Game = (() => {
          _players.secondPlayer.info.classList.add("starter-player");
          _players.secondPlayer.isStarter = true;
 
-         if (Game.isAITurn) AI.playAI();
+         if (Game.isAITurn) setTimeout(AI.playAI, 300);
       } else {
          _players.secondPlayer.isStarter = false;
          _players.secondPlayer.info.classList.remove("starter-player");
