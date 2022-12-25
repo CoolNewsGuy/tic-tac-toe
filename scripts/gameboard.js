@@ -63,6 +63,19 @@ const GameBoard = (() => {
       }
    };
 
+   // get rows of the board as DOM elements
+   const getBoardRowsAsDOMElements = () => {
+      let rows = [[], [], []];
+
+      for (let i = 0; i < GameBoard.squares.length; i++) {
+         if (i < 3) rows[0].push(GameBoard.squares[i]);
+         else if (i < 6) rows[1].push(GameBoard.squares[i]);
+         else rows[2].push(GameBoard.squares[i]);
+      }
+
+      return rows;
+   };
+
    const _cleanTheBoard = () => {
       squares.forEach((square) => {
          square.innerText = "";
@@ -106,6 +119,7 @@ const GameBoard = (() => {
       squares,
       board,
       getArrayOfEmptySpots,
+      getBoardRowsAsDOMElements,
       firstRow,
       secondRow,
       thirdRow,
