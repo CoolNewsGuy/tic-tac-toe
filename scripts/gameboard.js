@@ -56,8 +56,10 @@ const GameBoard = (() => {
       if (Game.checkWinning() || Game.checkTie()) {
          if (Game.checkWinning()) Game.increasePlayerScore();
 
-         _cleanTheBoard();
-         Game.changeStarterPlayer();
+         setTimeout(() => {
+            _cleanTheBoard();
+            Game.changeStarterPlayer();
+         }, 1000);
       }
    };
 
@@ -94,7 +96,9 @@ const GameBoard = (() => {
 
    gameContainer.addEventListener("click", (e) => {
       __fillSquareByHuman(e);
-      setTimeout(AI.playAI, 200);
+
+      if (Game.checkWinning() || Game.checkTie()) setTimeout(AI.playAI, 1200);
+      else setTimeout(AI.playAI, 200);
    });
 
    return {
