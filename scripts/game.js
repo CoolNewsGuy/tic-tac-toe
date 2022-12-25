@@ -53,6 +53,10 @@ const Game = (() => {
             GameBoard.firstRow[i] === GameBoard.secondRow[i] &&
             GameBoard.firstRow[i] === GameBoard.thirdRow[i]
          ) {
+            let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
+            for (let j = 0; j < 3; j++)
+               DOMBoard[j][i].classList.add("winning-line");
+
             return true;
          }
       }
