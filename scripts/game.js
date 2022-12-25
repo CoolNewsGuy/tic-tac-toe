@@ -29,13 +29,20 @@ const Game = (() => {
    };
 
    const _checkWinningHorizontally = () => {
+      let winRow = 0;
+
       for (let row of GameBoard.board) {
          if (
             row.every((elem) => elem === "X") ||
             row.every((elem) => elem === "O")
          ) {
+            GameBoard.getBoardRowsAsDOMElements()[winRow].forEach((spot) =>
+               spot.classList.add("winning-line")
+            );
             return true;
          }
+
+         winRow++;
       }
    };
 

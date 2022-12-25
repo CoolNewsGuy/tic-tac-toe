@@ -79,8 +79,7 @@ const GameBoard = (() => {
    const _cleanTheBoard = () => {
       squares.forEach((square) => {
          square.innerText = "";
-         square.classList.remove("x");
-         square.classList.remove("o");
+         square.classList.remove("x", "o", "winning-line");
       });
       board = [
          [
