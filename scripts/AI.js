@@ -1,4 +1,5 @@
 const AI = (() => {
+   // function to let AI play
    const playAI = () => {
       if (Game.isAITurn) {
          let randomSpot = Math.floor(Math.random() * 9);

@@ -23,6 +23,7 @@ const GameBoard = (() => {
       secondRow = board[1],
       thirdRow = board[2];
 
+   // this function will be used for minimax algorithm
    const getArrayOfEmptySpots = () => {
       let arr = [];
 
@@ -35,6 +36,7 @@ const GameBoard = (() => {
       return arr;
    };
 
+   // Put X or O when a square is clicked
    const __fillSquareByHuman = (e) => {
       let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
 
@@ -80,6 +82,7 @@ const GameBoard = (() => {
       return rows;
    };
 
+   // Function to clean the board when tie or winning
    const _cleanTheBoard = () => {
       squares.forEach((square) => {
          square.innerText = "";
@@ -110,6 +113,7 @@ const GameBoard = (() => {
       Game.moveNum = 1;
    };
 
+   // ? An event listener
    gameContainer.addEventListener("click", (e) => {
       __fillSquareByHuman(e);
 

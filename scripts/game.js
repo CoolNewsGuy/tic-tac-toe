@@ -16,6 +16,7 @@ const Game = (() => {
          ),
       };
 
+   // functions to check winning
    const checkWinning = () => {
       if (Game.moveNum >= 5) {
          if (
@@ -89,15 +90,18 @@ const Game = (() => {
       }
    };
 
+   // Check for tie
    const checkTie = () => {
       return Game.moveNum === 10 ? true : false;
    };
 
+   // Display players info under the board
    const setPlayersInfo = () => {
       _players.firstPlayer.name.innerText = form.firstPlayer;
       _players.secondPlayer.name.innerText = form.secondPlayer;
    };
 
+   // Change the starter player when winning or tie
    const changeStarterPlayer = () => {
       if (_players.firstPlayer.isStarter) {
          _players.firstPlayer.isStarter = false;
@@ -113,6 +117,7 @@ const Game = (() => {
       }
    };
 
+   // Increase the winning player's score
    const increasePlayerScore = () => {
       if (Game.numOfX > Game.numOfO) {
          if (_players.firstPlayer.isStarter)
