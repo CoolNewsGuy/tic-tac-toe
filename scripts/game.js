@@ -153,7 +153,7 @@ const Game = (() => {
       Game.numOfX = 0;
    };
 
-   // ! Minimax
+   // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
    const minimax = (currentBoardState, currentPlayingMark) => {
       let availableSpots = GameBoard.getArrayOfEmptySpots();
 
