@@ -139,6 +139,9 @@ const Game = (() => {
       Game.numOfX = 0;
    };
 
+   // ! Minimax
+   const minimax = (currentBoardState, currentPlayingMark) => {};
+
    return {
       playersInfo,
       moveNum: 1,
@@ -150,5 +153,6 @@ const Game = (() => {
       changeStarterPlayer,
       increasePlayerScore,
       isAITurn: false,
+      minimax,
    };
 })();
