@@ -140,7 +140,9 @@ const Game = (() => {
    };
 
    // ! Minimax
-   const minimax = (currentBoardState, currentPlayingMark) => {};
+   const minimax = (currentBoardState, currentPlayingMark) => {
+      let availableSpots = GameBoard.getArrayOfEmptySpots();
+   };
 
    return {
       playersInfo,
