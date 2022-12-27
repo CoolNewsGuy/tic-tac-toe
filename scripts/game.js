@@ -22,8 +22,10 @@ const Game = (() => {
          _checkWinningHorizontally(currentBoardState) ||
          _checkWinningVertically(currentBoardState) ||
          _checkWinningDiagonally(currentBoardState)
-      )
+      ) {
          return true;
+      }
+      return false;
    };
 
    const _checkWinningHorizontally = (currentBoardState) => {
