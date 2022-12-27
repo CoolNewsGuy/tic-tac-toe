@@ -17,26 +17,27 @@ const Game = (() => {
       };
 
    // functions to check winning
-   const checkWinning = () => {
+   const checkWinning = (currentBoardState = GameBoard.board) => {
       if (
-         _checkWinningHorizontally() ||
-         _checkWinningVertically() ||
-         _checkWinningDiagonally()
+         _checkWinningHorizontally(currentBoardState) ||
+         _checkWinningVertically(currentBoardState) ||
+         _checkWinningDiagonally(currentBoardState)
       )
          return true;
    };
 
-   const _checkWinningHorizontally = () => {
+   const _checkWinningHorizontally = (currentBoardState) => {
       let winRow = 0;
 
-      for (let row of GameBoard.board) {
+      for (let row of currentBoardState) {
          if (
             row.every((elem) => elem === "X") ||
             row.every((elem) => elem === "O")
          ) {
-            GameBoard.getBoardRowsAsDOMElements()[winRow].forEach((spot) =>
-               spot.classList.add("winning-line")
-            );
+            if (currentBoardState === GameBoard.board)
+               GameBoard.getBoardRowsAsDOMElements()[winRow].forEach((spot) =>
+                  spot.classList.add("winning-line")
+               );
             return true;
          }
 
@@ -44,44 +45,58 @@ const Game = (() => {
       }
    };
 
-   const _checkWinningVertically = () => {
+   const _checkWinningVertically = (currentBoardState) => {
+      let firstRow = currentBoardState[0],
+         secondRow = currentBoardState[1],
+         thirdRow = currentBoardState[2];
+
       for (let i = 0; i < 3; i++) {
          if (
-            GameBoard.firstRow[i] &&
-            GameBoard.firstRow[i] === GameBoard.secondRow[i] &&
-            GameBoard.firstRow[i] === GameBoard.thirdRow[i]
+            firstRow[i] &&
+            firstRow[i] === secondRow[i] &&
+            firstRow[i] === thirdRow[i]
          ) {
-            let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
-            for (let j = 0; j < 3; j++)
-               DOMBoard[j][i].classList.add("winning-line");
+            if (currentBoardState === GameBoard.board) {
+               let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
+               for (let j = 0; j < 3; j++)
+                  DOMBoard[j][i].classList.add("winning-line");
+            }
 
             return true;
          }
       }
    };
 
-   const _checkWinningDiagonally = () => {
+   const _checkWinningDiagonally = (currentBoardState) => {
+      let firstRow = currentBoardState[0],
+         secondRow = currentBoardState[1],
+         thirdRow = currentBoardState[2];
+
       // Check on the main diagonal
       if (
-         GameBoard.firstRow[0] &&
-         GameBoard.firstRow[0] === GameBoard.secondRow[1] &&
-         GameBoard.firstRow[0] === GameBoard.thirdRow[2]
+         firstRow[0] &&
+         firstRow[0] === secondRow[1] &&
+         firstRow[0] === thirdRow[2]
       ) {
-         let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
-         for (let i = 0; i < 3; i++)
-            DOMBoard[i][i].classList.add("winning-line");
+         if (currentBoardState === GameBoard.board) {
+            let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
+            for (let i = 0; i < 3; i++)
+               DOMBoard[i][i].classList.add("winning-line");
+         }
 
          return true;
       }
       // check on the secondary diagonal
       else if (
-         GameBoard.firstRow[2] &&
-         GameBoard.firstRow[2] === GameBoard.secondRow[1] &&
-         GameBoard.firstRow[2] === GameBoard.thirdRow[0]
+         firstRow[2] &&
+         firstRow[2] === secondRow[1] &&
+         firstRow[2] === thirdRow[0]
       ) {
-         let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
-         for (let i = 0, j = 2; i < 3; i++, j--)
-            DOMBoard[i][j].classList.add("winning-line");
+         if (currentBoardState === GameBoard.board) {
+            let DOMBoard = GameBoard.getBoardRowsAsDOMElements();
+            for (let i = 0, j = 2; i < 3; i++, j--)
+               DOMBoard[i][j].classList.add("winning-line");
+         }
 
          return true;
       }
