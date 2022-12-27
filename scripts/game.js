@@ -18,15 +18,12 @@ const Game = (() => {
 
    // functions to check winning
    const checkWinning = () => {
-      if (Game.moveNum >= 5) {
-         if (
-            _checkWinningHorizontally() ||
-            _checkWinningVertically() ||
-            _checkWinningDiagonally()
-         ) {
-            return true;
-         }
-      }
+      if (
+         _checkWinningHorizontally() ||
+         _checkWinningVertically() ||
+         _checkWinningDiagonally()
+      )
+         return true;
    };
 
    const _checkWinningHorizontally = () => {
