@@ -117,16 +117,22 @@ const Game = (() => {
 
    // Change the starter player when winning or tie
    const changeStarterPlayer = () => {
+      // * Make the second (AI) player the starter
       if (_players.firstPlayer.isStarter) {
          _players.firstPlayer.isStarter = false;
          _players.firstPlayer.info.classList.remove("starter-player");
          _players.secondPlayer.info.classList.add("starter-player");
          _players.secondPlayer.isStarter = true;
-      } else {
+
+         Game.isAITurn = true;
+      }
+      // * Make the first (human) player the starter
+      else {
          _players.secondPlayer.isStarter = false;
          _players.secondPlayer.info.classList.remove("starter-player");
          _players.firstPlayer.info.classList.add("starter-player");
          _players.firstPlayer.isStarter = true;
+
          Game.isAITurn = false;
       }
    };
