@@ -117,7 +117,8 @@ const GameBoard = (() => {
    gameContainer.addEventListener("click", (e) => {
       __fillSquareByHuman(e);
 
-      if (Game.checkWinning() || Game.checkTie()) setTimeout(AI.playAI, 1200);
+      if (Game.checkWinning() || Game.checkTie(Game.moveNum))
+         setTimeout(AI.playAI, 1200);
       else setTimeout(AI.playAI, 200);
    });
 

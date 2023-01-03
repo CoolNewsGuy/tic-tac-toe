@@ -105,8 +105,9 @@ const Game = (() => {
    };
 
    // Check for tie
-   const checkTie = () => {
-      return Game.moveNum === 10 ? true : false;
+
+   const checkTie = (numberOfMoves) => {
+      return numberOfMoves === 10 ? true : false;
    };
 
    // Display players info under the board
