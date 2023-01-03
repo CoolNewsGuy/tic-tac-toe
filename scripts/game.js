@@ -105,7 +105,6 @@ const Game = (() => {
    };
 
    // Check for tie
-
    const checkTie = (numberOfMoves) => {
       return numberOfMoves === 10 ? true : false;
    };
@@ -160,18 +159,6 @@ const Game = (() => {
       Game.numOfX = 0;
    };
 
-   // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
-   const minimax = (currentBoardState, currentPlayingMark) => {
-      let availableSpots = GameBoard.getArrayOfEmptySpots();
-
-      // *Create a copy of the board to avoid editing the original board
-      let boardCopy = [
-         GameBoard.firstRow.slice(0),
-         GameBoard.secondRow.slice(0),
-         GameBoard.thirdRow.slice(0),
-      ];
-   };
-
    return {
       playersInfo,
       moveNum: 1,
@@ -183,6 +170,5 @@ const Game = (() => {
       changeStarterPlayer,
       increasePlayerScore,
       isAITurn: false,
-      minimax,
    };
 })();
