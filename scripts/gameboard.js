@@ -57,7 +57,7 @@ const GameBoard = (() => {
 
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
 
-      if (Game.checkWinning() || Game.checkTie()) {
+      if (Game.checkWinning() || Game.checkTie(Game.moveNum)) {
          gameContainer.style.pointerEvents = "none";
          if (Game.checkWinning()) Game.increasePlayerScore();
 
