@@ -23,19 +23,6 @@ const GameBoard = (() => {
       secondRow = board[1],
       thirdRow = board[2];
 
-   // this function will be used for minimax algorithm
-   const getArrayOfEmptySpots = () => {
-      let arr = [];
-
-      GameBoard.board.forEach((row) => {
-         row.forEach((spot) =>
-            spot instanceof Array ? arr.push(spot) : false
-         );
-      });
-
-      return arr;
-   };
-
    // Put X or O when a square is clicked
    const __fillSquareByHuman = (e) => {
       let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
@@ -126,7 +113,6 @@ const GameBoard = (() => {
       gameContainer,
       squares,
       board,
-      getArrayOfEmptySpots,
       getBoardRowsAsDOMElements,
       firstRow,
       secondRow,

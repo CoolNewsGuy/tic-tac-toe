@@ -1,4 +1,20 @@
 const Minimax = (() => {
+   return {
+      getCurrentEmptySpots,
+   };
+
+   function getCurrentEmptySpots(currentBoardState) {
+      let arr = [];
+
+      currentBoardState.forEach((row) => {
+         row.forEach((spot) =>
+            spot instanceof Array ? arr.push(spot) : false
+         );
+      });
+
+      return arr;
+   }
+
    // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
    const minimax = (currentBoardState, currentPlayingMark) => {
       let availableSpots = GameBoard.getArrayOfEmptySpots();
