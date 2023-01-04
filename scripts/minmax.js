@@ -29,10 +29,10 @@ const Minimax = (() => {
       }
    }
 
-   function getCurrentEmptySpots(currentBoardState) {
+   function getCurrentEmptySpots() {
       let arr = [];
 
-      currentBoardState.forEach((row) => {
+      Minimax.virtualBoard.forEach((row) => {
          row.forEach((spot) =>
             spot instanceof Array ? arr.push(spot) : false
          );
