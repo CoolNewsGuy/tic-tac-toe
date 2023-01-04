@@ -5,8 +5,13 @@ const Minimax = (() => {
    return {
       getCurrentBoardState,
       getCurrentEmptySpots,
+      checkWinningInVirtualBoard,
       virtualBoard,
       isFirstTimeTesting: true,
+      humanMark: "X",
+      aiMark: "O",
+      currentPlayingMark: "O",
+      moveNum: 1,
    };
 
    function getCurrentBoardState() {
@@ -42,15 +47,26 @@ const Minimax = (() => {
       return arr;
    }
 
-   // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
-   const minimax = (currentBoardState, currentPlayingMark) => {
-      let moveNum = Game.moveNum;
-
+   // * function to check winning
+   function checkWinningInVirtualBoard() {
       // + Check if AI won
-      if (checkWinning(boardCopy) && !Game.isAITurn) return 1;
+      if (
+         Game.checkWinning(Minimax.virtualBoard) &&
+         Minimax.currentPlayingMark === "O"
+      )
+         return 1;
       // + Check if Human won
-      else if (checkWinning(boardCopy) && Game.isAITurn) return -1;
+      else if (
+         Game.checkWinning(Minimax.virtualBoard) &&
+         Minimax.currentPlayingMark === "X"
+      )
+         return -1;
       // + Check for tie
-      else if (checkTie(moveNum)) return 0;
-   };
+      else if (Game.checkTie(Minimax.moveNum)) return 0;
+      // + Continue moving if there's no winning or tie
+      else Minimax.moveNum++;
+   }
+
+   // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
+   const minimax = (currentBoardState, currentPlayingMark) => {};
 })();
