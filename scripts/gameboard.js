@@ -33,13 +33,11 @@ const GameBoard = (() => {
             e.target.innerText = "X";
             Game.numOfX++;
             Game.moveNum++;
-            Game.isAITurn = true;
          } else {
             e.target.classList.add("o");
             e.target.innerText = "O";
             Game.numOfO++;
             Game.moveNum++;
-            Game.isAITurn = true;
          }
 
       board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
@@ -53,7 +51,7 @@ const GameBoard = (() => {
             Game.changeStarterPlayer();
             gameContainer.style.pointerEvents = "";
          }, 1000);
-      }
+      } else Game.isAITurn = true;
    };
 
    // get rows of the board as DOM elements
