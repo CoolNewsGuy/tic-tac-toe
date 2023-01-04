@@ -23,9 +23,6 @@ const Game = (() => {
          _checkWinningVertically(currentBoardState) ||
          _checkWinningDiagonally(currentBoardState)
       ) {
-         if (Game.isAITurn) Game.isAIWinner = true;
-         else Game.isAIWinner = false;
-
          return true;
       }
       return false;
@@ -173,6 +170,5 @@ const Game = (() => {
       changeStarterPlayer,
       increasePlayerScore,
       isAITurn: false,
-      isAIWinner: false,
    };
 })();
