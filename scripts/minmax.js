@@ -29,6 +29,7 @@ const Minimax = (() => {
       }
    }
 
+   // * Get current empty spots in virtual board
    function getCurrentEmptySpots() {
       let arr = [];
 
