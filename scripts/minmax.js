@@ -1,3 +1,5 @@
+let counter = 0;
+
 const Minimax = (() => {
    // ! This will be used for recursive testing
    let virtualBoard;
@@ -6,7 +8,11 @@ const Minimax = (() => {
       getCurrentBoardState,
       getCurrentEmptySpots,
       checkWinningInVirtualBoard,
+      minimax,
       virtualBoard,
+      results: {
+         spotScores: [],
+      },
       isFirstTimeTesting: true,
       humanMark: "X",
       aiMark: "O",
@@ -14,6 +20,7 @@ const Minimax = (() => {
       moveNum: 1,
    };
 
+   // TODO This function hasn't been used yet
    function getCurrentBoardState() {
       switch (Minimax.isFirstTimeTesting) {
          // * Create a copy of the board just for the first test
@@ -62,11 +69,18 @@ const Minimax = (() => {
       )
          return -1;
       // + Check for tie
-      else if (Game.checkTie(Minimax.moveNum)) return 0;
-      // + Continue moving if there's no winning or tie
-      else Minimax.moveNum++;
+      else return 0;
    }
 
    // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
-   const minimax = (currentBoardState, currentPlayingMark) => {};
+   function minimax(currentBoardState, currentPlayingMark) {}
 })();
+
+Minimax.minimax(
+   [
+      ["X", [0, 1], "O"],
+      ["X", [1, 1], "X"],
+      ["O", "O", [2, 2]],
+   ],
+   "O"
+);
