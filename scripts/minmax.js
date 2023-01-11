@@ -9,10 +9,9 @@ const Minimax = (() => {
       minimax,
       virtualBoard,
       isFirstTimeTesting: true,
-      humanMark: "X",
-      aiMark: "O",
-      currentPlayingMark: "O",
-      moveNum: 1,
+      humanMark: "O",
+      aiMark: "X",
+      currentPlayingMark: "X",
    };
 
    function getCurrentBoardState() {
@@ -27,7 +26,8 @@ const Minimax = (() => {
 
             Minimax.isFirstTimeTesting = false;
             Minimax.virtualBoard = boardCopy;
-            break;
+
+            return Minimax.virtualBoard;
 
          // * For the second test and so on, we'll be getting the current state of the virtualBoard
          case false:
@@ -53,14 +53,14 @@ const Minimax = (() => {
       // + Check if AI won
       if (
          Game.checkWinning(Minimax.virtualBoard) &&
-         Minimax.currentPlayingMark === "O"
+         Minimax.currentPlayingMark === Minimax.aiMark
       ) {
          return 1;
       }
       // + Check if Human won
       else if (
          Game.checkWinning(Minimax.virtualBoard) &&
-         Minimax.currentPlayingMark === "X"
+         Minimax.currentPlayingMark === Minimax.humanMark
       ) {
          return -1;
       }
