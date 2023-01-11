@@ -71,7 +71,19 @@ const Minimax = (() => {
    }
 
    // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
-   function minimax(currentBoardState, currentPlayingMark) {}
+   function minimax(currentBoardState, currentPlayingMark) {
+      Minimax.virtualBoard = currentBoardState;
+      let availableSpots = getCurrentEmptySpots();
+      let results = [];
+
+      for (let spot of availableSpots) {
+         currentBoardState[spot[0]][spot[1]] = currentPlayingMark;
+         console.log(currentBoardState);
+
+         results.push(checkWinningInVirtualBoard());
+         currentBoardState[spot[0]][spot[1]] = spot;
+      }
+   }
 })();
 
 Minimax.minimax(
@@ -80,5 +92,5 @@ Minimax.minimax(
       ["X", [1, 1], "X"],
       ["O", "O", [2, 2]],
    ],
-   "O"
+   "X"
 );
