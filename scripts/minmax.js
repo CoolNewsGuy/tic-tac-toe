@@ -53,18 +53,20 @@ const Minimax = (() => {
       if (
          Game.checkWinning(Minimax.virtualBoard) &&
          Minimax.currentPlayingMark === "O"
-      )
+      ) {
          return 1;
+      }
       // + Check if Human won
       else if (
          Game.checkWinning(Minimax.virtualBoard) &&
          Minimax.currentPlayingMark === "X"
-      )
+      ) {
          return -1;
-      // + Check for tie
-      else if (Game.checkTie(Minimax.moveNum)) return 0;
-      // + Continue moving if there's no winning or tie
-      else Minimax.moveNum++;
+      }
+      // + Check for tie or any other shit
+      else {
+         return 0;
+      }
    }
 
    // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
