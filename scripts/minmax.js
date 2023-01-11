@@ -72,3 +72,12 @@ const Minimax = (() => {
    // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
    const minimax = (currentBoardState, currentPlayingMark) => {};
 })();
+
+Minimax.minimax(
+   [
+      ["X", [0, 1], "O"],
+      ["X", [1, 1], "X"],
+      ["O", "O", [2, 2]],
+   ],
+   "O"
+);
