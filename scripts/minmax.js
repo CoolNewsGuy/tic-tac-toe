@@ -6,6 +6,7 @@ const Minimax = (() => {
       getCurrentBoardState,
       getCurrentEmptySpots,
       checkWinningInVirtualBoard,
+      minimax,
       virtualBoard,
       isFirstTimeTesting: true,
       humanMark: "X",
@@ -70,7 +71,7 @@ const Minimax = (() => {
    }
 
    // ! Minimax where AI is MAXIMIZER and Human is MINIMIZER
-   const minimax = (currentBoardState, currentPlayingMark) => {};
+   function minimax(currentBoardState, currentPlayingMark) {}
 })();
 
 Minimax.minimax(
