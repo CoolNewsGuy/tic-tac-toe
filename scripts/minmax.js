@@ -74,13 +74,12 @@ const Minimax = (() => {
    function minimax(currentBoardState, currentPlayingMark) {
       Minimax.virtualBoard = currentBoardState;
       let availableSpots = getCurrentEmptySpots();
-      let results = [];
+      let results = new Map();
 
       for (let spot of availableSpots) {
          currentBoardState[spot[0]][spot[1]] = currentPlayingMark;
-         console.log(currentBoardState);
 
-         results.push(checkWinningInVirtualBoard());
+         results.set(spot, checkWinningInVirtualBoard());
          currentBoardState[spot[0]][spot[1]] = spot;
       }
    }
