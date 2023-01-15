@@ -2,18 +2,21 @@ const AI = (() => {
    // function to let AI play
    const playAI = () => {
       if (Game.isAITurn) {
-         let randomSpot = Math.floor(Math.random() * 9);
+         Minimax.minimax(Minimax.aiMark);
+         let bestSpot = JSON.stringify(Minimax.bestSpot);
 
-         while (
-            GameBoard.squares[randomSpot].classList.contains("x") ||
-            GameBoard.squares[randomSpot].classList.contains("o")
-         ) {
-            randomSpot = Math.floor(Math.random() * 9);
-         }
+         GameBoard.squares.forEach((square) => {
+            if (
+               square.getAttribute("data-index").replace(" ", "") === bestSpot
+            ) {
+               square.click();
+               return;
+            }
+         });
 
-         GameBoard.squares[randomSpot].click();
-
+         console.log(bestSpot);
          Game.isAITurn = false;
+         Minimax.isFirstTimeTesting = true;
       }
    };
 
