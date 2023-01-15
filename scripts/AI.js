@@ -14,7 +14,6 @@ const AI = (() => {
             }
          });
 
-         console.log(bestSpot);
          Game.isAITurn = false;
          Minimax.isFirstTimeTesting = true;
       }
