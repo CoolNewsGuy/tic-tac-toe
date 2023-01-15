@@ -26,6 +26,7 @@ const form = (() => {
    startBtn.onclick = __showGameboard;
 
    return {
+      formContainer,
       firstPlayer: firstPlayer.value,
       secondPlayer: secondPlayer.value,
    };

@@ -51,6 +51,12 @@ button:focus {
    box-shadow: 0 0 10px 5px #0ff;
 }
 
+#information-fade-out,
+#choose-opponent-fade-out {
+   animation: fade-out 1s;
+   display: flex;
+}
+
 /* TODO choose players section */
 .choose-players {
    height: 350px;
@@ -77,10 +83,12 @@ button:focus {
    padding-top: 20px;
    text-transform: uppercase;
    font-size: 1.2rem;
+   display: none;
 }
 
-#information-fade-out {
-   animation: fade-out 1s;
+#information-fade-in {
+   animation: fade-in 1s;
+   display: flex;
 }
 
 label {
@@ -105,6 +113,15 @@ input#first-player {
 
 input#second-player {
    margin-bottom: 85px;
+}
+
+@keyframes fade-out {
+   from {
+      opacity: 1;
+   }
+   to {
+      opacity: 0;
+   }
 }
 
 /* TODO Gameboard */
@@ -160,15 +177,6 @@ input#second-player {
    }
    100% {
       text-shadow: 0 0 20px rgb(0, 195, 255);
-   }
-}
-
-@keyframes fade-out {
-   from {
-      opacity: 1;
-   }
-   to {
-      opacity: 0;
    }
 }
 
