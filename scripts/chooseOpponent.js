@@ -12,6 +12,8 @@ const ChooseOpponent = (() => {
          Game.playersInfo.id = "players-info-fade-in";
          document.body.style.justifyContent = "start";
       }, 1000);
+
+      Game.isAIOpponent = true;
    }
 
    function __showInformationSection() {

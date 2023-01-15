@@ -185,5 +185,6 @@ const Game = (() => {
       changeStarterPlayer,
       increasePlayerScore,
       isAITurn: false,
+      isAIOpponent: false,
    };
 })();
