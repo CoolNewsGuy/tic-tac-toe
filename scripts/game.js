@@ -23,7 +23,14 @@ const Game = (() => {
          _checkWinningVertically(currentBoardState) ||
          _checkWinningDiagonally(currentBoardState)
       ) {
-         return true;
+         return [
+            true,
+            _checkWinningHorizontally(currentBoardState)
+               ? _checkWinningHorizontally(currentBoardState)[1]
+               : _checkWinningVertically(currentBoardState)
+               ? _checkWinningVertically(currentBoardState)[1]
+               : _checkWinningDiagonally(currentBoardState)[1],
+         ];
       }
       return false;
    };
@@ -40,7 +47,7 @@ const Game = (() => {
                GameBoard.getBoardRowsAsDOMElements()[winRow].forEach((spot) =>
                   spot.classList.add("winning-line")
                );
-            return true;
+            return [true, row[0]];
          }
 
          winRow++;
@@ -64,7 +71,7 @@ const Game = (() => {
                   DOMBoard[j][i].classList.add("winning-line");
             }
 
-            return true;
+            return [true, firstRow[i]];
          }
       }
    };
@@ -86,7 +93,7 @@ const Game = (() => {
                DOMBoard[i][i].classList.add("winning-line");
          }
 
-         return true;
+         return [true, firstRow[0]];
       }
       // check on the secondary diagonal
       else if (
@@ -100,7 +107,7 @@ const Game = (() => {
                DOMBoard[i][j].classList.add("winning-line");
          }
 
-         return true;
+         return [true, firstRow[2]];
       }
    };
 
@@ -125,6 +132,10 @@ const Game = (() => {
          _players.secondPlayer.isStarter = true;
 
          Game.isAITurn = true;
+         [Minimax.aiMark, Minimax.humanMark] = [
+            Minimax.humanMark,
+            Minimax.aiMark,
+         ];
       }
       // * Make the first (human) player the starter
       else {
@@ -134,6 +145,10 @@ const Game = (() => {
          _players.firstPlayer.isStarter = true;
 
          Game.isAITurn = false;
+         [Minimax.aiMark, Minimax.humanMark] = [
+            Minimax.humanMark,
+            Minimax.aiMark,
+         ];
       }
    };
 
@@ -170,5 +185,6 @@ const Game = (() => {
       changeStarterPlayer,
       increasePlayerScore,
       isAITurn: false,
+      isAIOpponent: false,
    };
 })();

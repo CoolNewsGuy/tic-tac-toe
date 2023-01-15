@@ -27,7 +27,7 @@ const GameBoard = (() => {
    const __fillSquareByHuman = (e) => {
       let squareIndex = JSON.parse(e.target.getAttribute("data-index"));
 
-      if (!e.target.innerText)
+      if (!e.target.innerText) {
          if (Game.moveNum % 2 !== 0) {
             e.target.classList.add("x");
             e.target.innerText = "X";
@@ -40,18 +40,19 @@ const GameBoard = (() => {
             Game.moveNum++;
          }
 
-      board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
+         board[squareIndex[0]][squareIndex[1]] = e.target.innerText;
 
-      if (Game.checkWinning() || Game.checkTie(Game.moveNum)) {
-         gameContainer.style.pointerEvents = "none";
-         if (Game.checkWinning()) Game.increasePlayerScore();
+         if (Game.checkWinning() || Game.checkTie(Game.moveNum)) {
+            gameContainer.style.pointerEvents = "none";
+            if (Game.checkWinning()) Game.increasePlayerScore();
 
-         setTimeout(() => {
-            _cleanTheBoard();
-            Game.changeStarterPlayer();
-            gameContainer.style.pointerEvents = "";
-         }, 1000);
-      } else Game.isAITurn = true;
+            setTimeout(() => {
+               _cleanTheBoard();
+               Game.changeStarterPlayer();
+               gameContainer.style.pointerEvents = "";
+            }, 1000);
+         } else Game.isAITurn = true;
+      }
    };
 
    // get rows of the board as DOM elements
@@ -101,6 +102,11 @@ const GameBoard = (() => {
    // ? An event listener
    gameContainer.addEventListener("click", (e) => {
       __fillSquareByHuman(e);
+
+      if (Game.isAIOpponent)
+         if (Game.checkWinning() || Game.checkTie(Game.moveNum))
+            setTimeout(AI.playAI, 1200);
+         else setTimeout(AI.playAI, 200);
    });
 
    return {

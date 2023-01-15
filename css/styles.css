@@ -18,24 +18,77 @@ body {
    flex-direction: column;
 }
 
-/* TODO information */
-.information {
+.information,
+.choose-players {
    background: rgb(17, 17, 24);
-   height: 350px;
-   width: 300px;
    border: 1px solid #0ff;
    color: rgb(53, 231, 133);
    animation: light-up 1s infinite alternate;
-   padding-top: 20px;
-   text-transform: uppercase;
    display: flex;
    flex-direction: column;
    align-items: center;
-   font-size: 1.2rem;
 }
 
-#information-fade-out {
+button {
+   background: #000;
+   color: #0ff;
+   border: 1px solid #0ff;
+   padding: 5px 40px;
+   font-size: 1.5rem;
+   cursor: pointer;
+   transition: 0.2s;
+}
+
+button:hover {
+   background: #0ff;
+   outline: none;
+   color: #000;
+   box-shadow: 0 0 10px 5px #0ff;
+}
+
+button:focus {
+   outline: none;
+   box-shadow: 0 0 10px 5px #0ff;
+}
+
+#information-fade-out,
+#choose-opponent-fade-out {
    animation: fade-out 1s;
+   display: flex;
+}
+
+/* TODO choose players section */
+.choose-players {
+   height: 350px;
+   width: 300px;
+   display: flex;
+}
+
+.choose-players button {
+   width: 200px;
+}
+
+.buttons {
+   flex-grow: 1;
+   display: flex;
+   flex-direction: column;
+   padding-top: 40px;
+   gap: 50px;
+}
+
+/* TODO information */
+.information {
+   height: 350px;
+   width: 300px;
+   padding-top: 20px;
+   text-transform: uppercase;
+   font-size: 1.2rem;
+   display: none;
+}
+
+#information-fade-in {
+   animation: fade-in 1s;
+   display: flex;
 }
 
 label {
@@ -62,26 +115,13 @@ input#second-player {
    margin-bottom: 85px;
 }
 
-#start-btn {
-   background: #000;
-   color: #0ff;
-   border: 1px solid #0ff;
-   padding: 5px 40px;
-   font-size: 1.5rem;
-   cursor: pointer;
-   transition: 0.2s;
-}
-
-#start-btn:hover {
-   background: #0ff;
-   outline: none;
-   color: #000;
-   box-shadow: 0 0 10px 5px #0ff;
-}
-
-#start-btn:focus {
-   outline: none;
-   box-shadow: 0 0 10px 5px #0ff;
+@keyframes fade-out {
+   from {
+      opacity: 1;
+   }
+   to {
+      opacity: 0;
+   }
 }
 
 /* TODO Gameboard */
@@ -137,15 +177,6 @@ input#second-player {
    }
    100% {
       text-shadow: 0 0 20px rgb(0, 195, 255);
-   }
-}
-
-@keyframes fade-out {
-   from {
-      opacity: 1;
-   }
-   to {
-      opacity: 0;
    }
 }
 
